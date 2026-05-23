@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>待办事项</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <!--标题-->
+    <header class="header">
+        <h1>待办事项</h1>
+        <p class="date" id="currentDate"></p>
+    </header>
+    <!-- 输入区域 -->
+    <div class="input-section">
+        <input type="text" id="taskInput" placeholder="输入新任务..." maxlength="50">
+        <button id="addBtn" class="btn btn-primary">添加</button>
+    </div>
+
+    <!-- 统计信息 -->
+    <div class="stats">
+        <span class="stat-item">已完成: <strong id="completedCount">0</strong></span>
+        <span class="stat-item">待完成: <strong id="pendingCount">0</strong></span>
+    </div>
+
+    <!-- 待完成列表 -->
+    <div class="task-section">
+        <h2>待完成</h2>
+        <ul id="pendingList" class="task-list">
+            <!-- 待完成的任务会在这里显示 -->
+        </ul>
+    </div>
+
+    <!-- 已完成列表 -->
+    <div class="task-section">
+        <h2> 已完成 </h2>
+        <ul id="completedList" class="task-list">
+            <!-- 已完成的任务会在这里显示 -->
+        </ul>
+    </div>
+
+    <!-- 操作按钮 -->
+    <div class="actions">
+        <button id="clearCompleted" class="btn btn-secondary">清空已完成</button>
+        <button id="clearAll" class="btn btn-danger">全部清除</button>
+    </div>
+</div>
+</div>
+</body>
+</html>
