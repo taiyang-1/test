@@ -39,14 +39,20 @@ public class Cycle {
                     System.out.println("恭喜你,猜对了");
                     break;
                 }
-            } while (true) ;
-            System.out.println("是否继续Y/N");
-            String choice = scanner.next();
-            if (choice.equals("Y")){
-                flag = true;
-            }else if(choice.equals("N")){
-                flag = false;
-                System.out.println("游戏结束");
+            } while (true);
+            while (true) {
+                System.out.println("是否继续Y/N");
+                String choice = scanner.next();
+                if (choice.equalsIgnoreCase("Y")) {
+                    flag = true;
+                    break;
+                } else if (choice.equalsIgnoreCase("N")) {
+                    flag = false;
+                    System.out.println("游戏结束");
+                    break;
+                } else {
+                    System.out.println("输入错误，请重新输入Y或N");
+                }
             }
         }
 
