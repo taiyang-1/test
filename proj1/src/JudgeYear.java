@@ -16,7 +16,19 @@ public class JudgeYear {
             }else {
                 System.out.println(year + "不是闰年");
             }
-
+            while (true) {
+                System.out.println("是否继续 1 继续 2 退出");
+                int choice = scanner.nextInt();
+                if (choice == 1){
+                    flag = true;
+                    break;
+                }else if (choice == 2){
+                    flag = false;
+                    break;
+                }else{
+                    System.out.println("输入错误,请重新输入");
+                }
+            }
         }
 
     }
