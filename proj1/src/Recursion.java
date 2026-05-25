@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Recursion {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("请输入数字：");
+        System.out.println("(阶乘)请输入数字：");
         int n = scanner.nextInt();
         int result = factorial(5);
         System.out.println(result);
@@ -16,6 +16,11 @@ public class Recursion {
         int m = scanner.nextInt();
         int result2 = fib(m);
         System.out.println(result2);
+
+        System.out.println("(arraySum)请输入数字: ");
+        int[] arr = {1, 2, 3, 4, 5};
+        int result3 = arraySum(arr, arr.length - 1);
+        System.out.println(result3);
 
 
     }
@@ -36,6 +41,17 @@ public class Recursion {
         }
 
     }
+//    arraySum(arr, index) → 递归累加数组中所有元素
+public static int arraySum(int[] arr, int index) {
+    // 终止条件
+    if (index < 0) {
+        return 0;
+    }
+
+    // 递归调用
+    return arr[index] + arraySum(arr, index - 1);
+}
+
 
 
 }
