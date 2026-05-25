@@ -30,6 +30,8 @@ public class StringPractice {
 
         System.out.println(isPalindrome("abcba"));
         System.out.println(countChar("hello",'l'));
+
+        countChar("huiad19391");
     }
     public static String reverse(String str){
        // return new StringBuilder(str).reverse().toString();
@@ -72,4 +74,34 @@ public static String isPalindrome(String str){
         }
         return count;
    }
+
+   public static void countChar(String str) {
+       int number = 0;
+       int c = 0;
+       for (int i = 0; i < str.length(); i++) {
+           if (str.charAt(i) >= '0' && str.charAt(i) <= '9') {
+               number++;
+           } else if (str.charAt(i) >= 'A' && str.charAt(i) <= 'Z'|| str.charAt(i) >= 'a' && str.charAt(i) <= 'z') {
+               c++;
+           }
+
+       }
+       System.out.println("数字个数：" + number);
+       System.out.println("字母个数：" + c);
+   }
+    public static void count(String str){
+        char[] arr = new char[128];
+        for(int i = 0;i<str.length();i++){
+            char ch = str.charAt(i);
+            arr[ch]++;
+        }
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] > 0) {                     // 这个位置有记录
+                char ch = (char) i;                // 把下标转回字符，97 → 'a'
+                System.out.println(ch + " 出现 " + arr[i] + " 次");
+            }
+        }
+    }
+
+
 }
