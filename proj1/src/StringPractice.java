@@ -91,20 +91,6 @@ public static String isPalindrome(String str){
        System.out.println("数字个数：" + number);
        System.out.println("字母个数：" + c);
    }
-    public static void countChar2(String str) {
-        int number = 0;
-        int c = 0;
-        for (int i = 0; i < str.length(); i++) {
-            if (str.charAt(i) >= '0' && str.charAt(i) <= '9') {
-                number++;
-            } else if (str.charAt(i) >= 'A' && str.charAt(i) <= 'Z'|| str.charAt(i) >= 'a' && str.charAt(i) <= 'z') {
-                c++;
-            }
-
-        }
-        System.out.println("数字个数：" + number);
-        System.out.println("字母个数：" + c);
-    }
     public static void count(String str) {
         int[] arr = new int[128];  // 用 int 数组存储计数
 
