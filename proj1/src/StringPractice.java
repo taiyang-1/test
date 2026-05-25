@@ -32,6 +32,8 @@ public class StringPractice {
         System.out.println(countChar("hello",'l'));
 
         countChar("huiad19391");
+
+        count("hduanwdo1489379");
     }
     public static String reverse(String str){
        // return new StringBuilder(str).reverse().toString();
@@ -89,19 +91,50 @@ public static String isPalindrome(String str){
        System.out.println("数字个数：" + number);
        System.out.println("字母个数：" + c);
    }
-    public static void count(String str){
-        char[] arr = new char[128];
-        for(int i = 0;i<str.length();i++){
-            char ch = str.charAt(i);
-            arr[ch]++;
+    public static void countChar2(String str) {
+        int number = 0;
+        int c = 0;
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) >= '0' && str.charAt(i) <= '9') {
+                number++;
+            } else if (str.charAt(i) >= 'A' && str.charAt(i) <= 'Z'|| str.charAt(i) >= 'a' && str.charAt(i) <= 'z') {
+                c++;
+            }
+
         }
+        System.out.println("数字个数：" + number);
+        System.out.println("字母个数：" + c);
+    }
+    public static void count(String str) {
+        int[] arr = new int[128];  // 用 int 数组存储计数
+
+        // 统计每个字符的出现次数
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            arr[ch]++;  // ch 自动转成 ASCII 值作为索引
+        }
+
+        // 打印结果
+        System.out.println("字符串 \"" + str + "\" 中各字符出现次数:");
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] > 0) {                     // 这个位置有记录
-                char ch = (char) i;                // 把下标转回字符，97 → 'a'
-                System.out.println(ch + " 出现 " + arr[i] + " 次");
+            if (arr[i] > 0) {
+                char ch = (char) i;
+
+                // 特殊字符处理
+                String charDisplay;
+                if (ch == ' ') {
+                    charDisplay = "空格";
+                } else if (ch == '\t') {
+                    charDisplay = "制表符";
+                } else {
+                    charDisplay = "'" + ch + "'";
+                }
+
+                System.out.println(charDisplay + " 出现 " + arr[i] + " 次");
             }
         }
     }
-
-
 }
+
+
+
