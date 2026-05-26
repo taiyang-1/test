@@ -107,6 +107,45 @@
   </tbody>
 </table>
 
+<!--
+<ul>
+            <li>用户名（text）</li>
+            <li>密码（password）</li>
+            <li>性别（radio，男/女）</li>
+            <li>爱好（checkbox，编程/运动/音乐，至少两个）</li>
+            <li>城市（select 下拉框，至少 3 个选项）</li>
+            <li>个人简介（textarea）</li>
+            <li>提交按钮</li>
+        </ul>
+
+-->
+<form>
+  <label for = "username2">账号：</label>
+  <input id = "username2" type = "text" placeholder="请输入账号"><br>
+  <label for = "password2">密码：</label>
+  <input id = "password2" type = "password" placeholder="请输入密码"><br>
+  <label>性别：</label>
+  <input type = "radio" id = "male" >
+  <label for = "male">男</label>
+  <input type = "radio" id = "female">
+  <label for = "female">女</label><br>
+  <label>爱好：</label>
+  <input type = "checkbox" id = "coding">
+  <label for = "coding">编程</label>
+  <input type = "checkbox" id = "sport">
+  <label for = "sport">运动</label>
+  <input type = "checkbox" id = "music">
+  <label for = "music">音乐</label><br>
+  <label>城市：</label>
+  <select>
+    <option>北京</option>
+    <option>上海</option>
+    <option>广州</option>
+  </select><br>
+  <textarea cols = "50" rows = "5" placeholder = "请输入个人简介"></textarea><br>
+  <button type = "submit">提交</button>
+
+</form>
 <p id = "down">
   <a href = "#top">回到顶部</a>
 </p>
