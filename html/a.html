@@ -32,12 +32,14 @@
   <h2>这是二级标题</h2>
   <p>写出对应的 HTML 标签来实现下面这组标题层级：</p>
   <ul>
+    <!--无序 -->
     <li><h3>三级标题</h3></li>
     <li><h4>四级标题</h4></li>
     <li><h5>五级标题</h5></li>
   </ul>
 
   <ol>
+    <!--有序 -->
     <li><h3>三级标题</h3></li>
     <li><h4>四级标题</h4></li>
     <li><h5>五级标题</h5></li>
@@ -50,9 +52,60 @@
   <a href = "https://github.com/taiyang-1/test" target="_blank" >我的github仓库</a>
   <a href = "#down">到底部</a>
 </div>
+<div class = "ref">
+  <h2>表单，标签，表格</h2>
+  <form>
+  <label for="username">账号：</label>
+  <input id = "username" type ="text" placeholder = "请输入账号"><br>
+    <label for="password">密码：</label>
+  <input id = "password" type ="password"  value = "123456" placeholder = "请输入密码"><br>
+  </form>
+</div>
 
+<table border ="1" cellpadding="8" cellspacing="">
+  <thead>
+  <tr>
+    <th>时间</th>
+    <th>周一</th>
+    <th>周二</th>
+    <th>周三</th>
+  </tr>
+  </thead>
+  <tboyd>
+    <tr>
+      <td>8:00-10:00</td>
+      <td>数学</td>
+      <td>语文</td>
+      <td>英语</td>
+    </tr>
+    <tr>
+      <td>10:00-12:00</td>
+      <td>物理</td>
+      <td>化学</td>
+      <td>生物</td>
+    </tr>
+  </tboyd>
+</table>
 
-
+<table border="1" cellpadding="10" cellspacing="0">
+  <thead>
+  <tr>
+    <th>商品</th>
+    <th>单价</th>
+    <th>数量</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>苹果</td>
+    <td>5元</td>
+    <td>3斤</td>
+  </tr>
+  <tr>
+    <td colspan="3" style="text-align:center;">总计：15元</td>
+  </tr>
+  </tbody>
+</table>
 
 <p id = "down">
   <a href = "#top">回到顶部</a>
