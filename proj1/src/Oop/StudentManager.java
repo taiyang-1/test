@@ -13,6 +13,7 @@ public class StudentManager {
 public void add(Student s){
         if(size == students.length){
             System.out.println("数组已满");
+            return;
         }
     students[size] = s;
     size++;
@@ -22,11 +23,13 @@ public void delete(String id){
     int index = -1;
     // 先找到要删的位置
     for (int i = 0; i < size; i++) {
-        if (students[i].getId().equals(id)) {
+        if(students[i].getId().equals(id)) {
             index = i;
             break;
         }
+
     }
+
 
     if (index == -1) {
         System.out.println("未找到该学生");
@@ -46,21 +49,28 @@ public void delete(String id){
 }
 public void update(Student s){
     for (int i = 0; i < size; i++) {
-        if (students[i].getId().equals(s.getId())) {
+        if(students[i].getId().equals(s.getId())){
             students[i] = s;
             System.out.println("更新成功");
-            return;
+        }else{
+            System.out.println("未找到该学生");
         }
     }
-    System.out.println("未找到该学生");
 }
 public void showAll(){
     for (int i = 0; i < size; i++) {
-        System.out.println("学号" + students[i].getId() + "姓名" + students[i].getName() + "年龄" + students[i].getAge() +"成绩" + students[i].getScore());
+        students[i].show();
     }
 }
 public int getSize(){
         return size;
 }
+ public Student findById(String id){
+     for (int i = 0; i < size; i++) {
+         if(students[i].getId().equals(id)) {
 
+             return students[i];
+         }
+     }return null;
+ }
 }
