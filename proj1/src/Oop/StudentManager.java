@@ -40,14 +40,14 @@ public void delete(String id){
 
 }
 public void update(Student s){
-    for (int i = 0; i < size; i++) {
-        if(students[i].getId().equals(s.getId())){
-            students[i] = s;
-            System.out.println("更新成功");
-            return;
-        }
+    int index = findById(s.getId());
+    if(index == -1){
         System.out.println("未找到该学生");
-        }
+        return;
+    }else{
+        students[index] = s;
+        System.out.println("修改成功");
+    }
     }
 
 public void showAll(){
