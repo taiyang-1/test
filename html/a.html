@@ -9,7 +9,15 @@
 </head>
 <body>
 <h1>演示成果</h1>
-<p>通过<del>24</del><ins>2</ins>小时的学习，我成功掌握了以下</p>
+<div>
+  <ul style = "display: flex; gap: 20px; list-style: none; padding: 0; margin: 0;">
+    <li>首页</li>
+    <li>关于</li>
+    <li>联系</li>
+    <li>我们</li>
+  </ul>
+</div>
+<p id = "top">通过<del>24</del><ins>2</ins>小时的学习，我成功掌握了以下</p>
 <table border="1" cellpadding="10" cellspacing="0">
   <tr><th>名称</th><th>命令</th><th>效果</th></tr>
   <tr><td>删除</td><td><del><code>del</code></del></td><td><del>删除</del></td></tr>
@@ -38,7 +46,16 @@
 <div>
 <h2>插入图片及连接</h2>
   <img src="wallhaven-exywxo_2560x1080.png" alt="壁纸图片">
-  <a href = "https://github.com/taiyang-1/test" >我的github仓库</a>
+  <a href = "https://github.com/taiyang-1/test" >当前窗口打开我的github仓库</a>
+  <a href = "https://github.com/taiyang-1/test" target="_blank" >我的github仓库</a>
+  <a href = "#down">到底部</a>
 </div>
+
+
+
+
+<p id = "down">
+  <a href = "#top">回到顶部</a>
+</p>
 </body>
 </html>
