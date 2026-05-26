@@ -7,7 +7,7 @@ public class StudentManager {
     private Student[] students;
     private int size;
 //传入数组的初始化参数
-    StudentManager(int capacity){
+   public StudentManager(int capacity){
         students = new Student[capacity];
     }
 public void add(Student s){
@@ -20,15 +20,7 @@ public void add(Student s){
 }
 public void delete(String id){
 
-    int index = -1;
-    // 先找到要删的位置
-    for (int i = 0; i < size; i++) {
-        if(students[i].getId().equals(id)) {
-            index = i;
-            break;
-        }
-
-    }
+    int index = findById(id);
 
 
     if (index == -1) {
@@ -52,11 +44,12 @@ public void update(Student s){
         if(students[i].getId().equals(s.getId())){
             students[i] = s;
             System.out.println("更新成功");
-        }else{
-            System.out.println("未找到该学生");
+            return;
+        }
+        System.out.println("未找到该学生");
         }
     }
-}
+
 public void showAll(){
     for (int i = 0; i < size; i++) {
         students[i].show();
@@ -65,12 +58,15 @@ public void showAll(){
 public int getSize(){
         return size;
 }
- public Student findById(String id){
+ public int findById(String id){
+     if(id == null){
+         return -1;
+     }
      for (int i = 0; i < size; i++) {
-         if(students[i].getId().equals(id)) {
-
-             return students[i];
+         if(id.equals(students[i].getId())){
+             return i;
          }
-     }return null;
+     }
+     return -1;
  }
 }
