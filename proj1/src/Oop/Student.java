@@ -8,14 +8,16 @@ public class Student {
     private String name;
     private int age;
     private double score;
+    public static int count = 0;
     public Student(){
-
+   count++;
     }
     public Student(String id,String name,int age,double score){
         this.id = id;
         this.name = name;
         this.age = age;
         this.score = score;
+        count++;
     }
     public void setId(String id){
         this.id = id;
@@ -49,6 +51,9 @@ public class Student {
      public void show(){
          System.out.println("学号："+id+"姓名："+name+"年龄："+age+"成绩："+score);
      }
+    public static int getCount(){
+        return count;
+    }
 
     }
 
