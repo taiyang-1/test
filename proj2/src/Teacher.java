@@ -21,6 +21,6 @@ private double salary;
 
     @Override
     public void show() {
-        System.out.println(getName() + " " + getAge() + " " + salary);
+        System.out.println(getName() + getAge() +" " + salary);
     }
 }

@@ -13,14 +13,7 @@ public class Main {
         p[1] = new Teacher("ll", 12, 5000);
         for (int i = 0; i < p.length; i++) {
             if (p[i] != null) {
-                p[i].show();
-                if (p[i] instanceof Student) {
-                    Student s = (Student) p[i];
-                    System.out.println(s.getStuId());
-                } else if (p[i] instanceof Teacher) {
-                    Teacher t = (Teacher) p[i];
-                    System.out.println(t.getSalary());
-                }
+                util.printInfo(p[i]);
             }
         }
         USB[] u = new USB[3];
@@ -36,5 +29,6 @@ public class Main {
             u[i].start();
             u[i].stop();
         }
+        util.printInfo(p[1]);
     }
 }

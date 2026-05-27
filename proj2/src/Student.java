@@ -3,7 +3,7 @@
  */
 public class Student extends Person {
     private String stuId;
-
+    final String SCHOOL = "xx大学";
     public Student() {
     }
 
@@ -22,6 +22,6 @@ public class Student extends Person {
 
     @Override
     public void show() {
-     System.out.println(getName()+" "+getAge()+" "+stuId);
+     System.out.println(getName() + " " + getAge() + " " +stuId + "来自 "+SCHOOL);
     }
 }
