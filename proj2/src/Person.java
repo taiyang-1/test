@@ -1,7 +1,7 @@
 /**
  * @author lyf
  */
-public class Person {
+public abstract class Person {
     private String name;
     private int age;
     public Person(String name,int age){
@@ -25,7 +25,5 @@ public class Person {
     public void setAge(int age) {
         this.age = age;
     }
-    public void show(){
-        System.out.print("名字是" + name + "年龄是" + age );
-    }
+    public abstract void show();
 }

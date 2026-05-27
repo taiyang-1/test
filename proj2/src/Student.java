@@ -22,7 +22,6 @@ public class Student extends Person {
 
     @Override
     public void show() {
-     super.show();
-     System.out.println("学号：" + stuId);
+     System.out.println(getName()+" "+getAge()+" "+stuId);
     }
 }
