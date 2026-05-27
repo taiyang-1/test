@@ -6,28 +6,30 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>test</title>
+  <link rel="stylesheet" href="a.css">
 </head>
 <body>
 <h1>演示成果</h1>
 <div>
-  <ul style = "display: flex; gap: 20px; list-style: none; padding: 0; margin: 0;">
+  <ul class= "nav"  >
     <li>首页</li>
     <li>关于</li>
     <li>联系</li>
     <li>我们</li>
   </ul>
+  <a href="#down">跳转到底部</a>
 </div>
 <p id = "top">通过<del>24</del><ins>2</ins>小时的学习，我成功掌握了以下</p>
-<table border="1" cellpadding="10" cellspacing="0">
-  <tr><th>名称</th><th>命令</th><th>效果</th></tr>
-  <tr><td>删除</td><td><del><code>del</code></del></td><td><del>删除</del></td></tr>
-  <tr><td>插入</td><td><ins><code>ins</code></ins></td><td><ins>插入</ins></td></tr>
-  <tr><td>替换</td><td><code>rep</code></td><td>替换</td></tr>
-  <tr><td>强调</td><td><em><code>em</code></em></td><td><em>强调</em></td></tr>
-  <tr><td>加粗</td><td><strong><code>strong</code></strong></td><td><strong>加粗</strong></td></tr>
-  <tr><td>段落<td><td><code>p</code></td><td>段落</td></tr>
+<!--<table border="1" cellpadding="10" cellspacing="0" style="margin:0 auto;">-->
+<!--  <tr><th>名称</th><th>命令</th><th>效果</th></tr>-->
+<!--  <tr><td>删除</td><td><del><code>del</code></del></td><td><del>删除</del></td></tr>-->
+<!--  <tr><td>插入</td><td><ins><code>ins</code></ins></td><td><ins>插入</ins></td></tr>-->
+<!--  <tr><td>替换</td><td><code>rep</code></td><td>替换</td></tr>-->
+<!--  <tr><td>强调</td><td><em><code>em</code></em></td><td><em>强调</em></td></tr>-->
+<!--  <tr><td>加粗</td><td><strong><code>strong</code></strong></td><td><strong>加粗</strong></td></tr>-->
+<!--  <tr><td>段落</td><td><code>p</code></td><td>段落</td></tr>-->
 
-</table><br>
+<!--</table><br>-->
 <div>
   <h2>这是二级标题</h2>
   <p>写出对应的 HTML 标签来实现下面这组标题层级：</p>
@@ -47,10 +49,9 @@
 </div>
 <div>
 <h2>插入图片及连接</h2>
-  <img src="wallhaven-exywxo_2560x1080.png" alt="壁纸图片">
+  <img src="wallhaven-exywxo_2560x1080.png" alt="壁纸图片" style="width:500px;border-radius: 10px;"><br>
   <a href = "https://github.com/taiyang-1/test" >当前窗口打开我的github仓库</a>
   <a href = "https://github.com/taiyang-1/test" target="_blank" >我的github仓库</a>
-  <a href = "#down">到底部</a>
 </div>
 <div class = "ref">
   <h2>表单，标签，表格</h2>
@@ -62,7 +63,7 @@
   </form>
 </div>
 
-<table border ="1" cellpadding="8" cellspacing="">
+<table border ="1" cellpadding="8" cellspacing="" center; style="margin: 0 auto">
   <thead>
   <tr>
     <th>时间</th>
@@ -87,7 +88,7 @@
   </tbody>
 </table>
 
-<table border="1" cellpadding="10" cellspacing="0">
+<table border="1" cellpadding="10" cellspacing="0" style="margin: 0 auto">
   <thead>
   <tr>
     <th>商品</th>
@@ -147,6 +148,7 @@
 
 </form>
 <p id = "down">
+  <img src="1.jpg" class="img" alt="壁纸">
   <a href = "#top">回到顶部</a>
 </p>
 </body>
