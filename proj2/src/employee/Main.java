@@ -15,9 +15,18 @@ public class Main {
         System.out.println();
         System.out.println("奖金合计："+CompanyUtil.totalBonus(arr));
         System.out.println();
-        CompanyUtil.trainAll(arr);
-        System.out.println();
+
+
         CompanyUtil.sortBySalary(arr);
         CompanyUtil.printAll(arr);
+        Trainable[] t = new Trainable[2];
+        t[0] = new Manager(1,"张三",15000,"IT",10);
+        t[1] = new Trainable() {
+            @Override
+            public void train() {
+                System.out.println("参与了培训");
+            }
+        };
+        CompanyUtil.trainAll(t);
     }
 }
