@@ -9,8 +9,10 @@
   <link rel="stylesheet" href="a.css">
 </head>
 <body>
+<header>
 <h1>演示成果</h1>
-<div>
+</header>
+<nav>
   <ul class= "nav"  >
     <li>首页</li>
     <li>关于</li>
@@ -18,7 +20,9 @@
     <li>我们</li>
   </ul>
   <a href="#down">跳转到底部</a>
-</div>
+</nav>
+<main>
+  <div class="content">
 <p id = "top">通过<del>24</del><ins>2</ins>小时的学习，我成功掌握了以下</p>
 <!--<table border="1" cellpadding="10" cellspacing="0" style="margin:0 auto;">-->
 <!--  <tr><th>名称</th><th>命令</th><th>效果</th></tr>-->
@@ -107,7 +111,7 @@
   </tr>
   </tbody>
 </table>
-
+  </div>
 <!--
 <ul>
             <li>用户名（text）</li>
@@ -120,11 +124,22 @@
         </ul>
 
 -->
+  <aside class = "aside">
+    <h2>侧边栏</h2>
+    <p>这是侧边栏</p>
+  <div class ="form-container">
 <form>
+  <div class="form-header">
+    <div class="form-fields">
   <label for = "username2">账号：</label>
   <input id = "username2" type = "text" placeholder="请输入账号"><br>
   <label for = "password2">密码：</label>
   <input id = "password2" type = "password" placeholder="请输入密码"><br>
+    </div>
+    <div class="avatar">
+      <img src="1.jpg" class="img" alt="头像">
+    </div>
+  </div>
   <label>性别：</label>
   <input type = "radio" id = "male" >
   <label for = "male">男</label>
@@ -147,9 +162,13 @@
   <button type = "submit">提交</button>
 
 </form>
-<p id = "down">
-  <img src="1.jpg" class="img" alt="壁纸">
+
+  </div>
+  </aside>
+</main>
+<footer class = "footer" id = "down">
+  <p>简单的页脚</p>
   <a href = "#top">回到顶部</a>
-</p>
+</footer>
 </body>
 </html>

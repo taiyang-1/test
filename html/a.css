@@ -3,22 +3,39 @@
     margin: 0;
     padding: 0;
 }
+header{
+    background-color: #2c3e50;
+    color:white;
+    text-align:left;
+    padding-left:20px;
+}
 
 body {
     background-color: #f5f6fa;
     color: #333;
     font-family: "Microsoft YaHei", sans-serif;
     text-align: center;
-    padding: 20px;
-}
+    padding: 0;
 
+}
+main{
+    display:flex;
+    align-items: flex-start;
+    gap: 40px;
+    width:90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+.content{flex:2}
+.aside{flex:1;position: sticky;
+    top: 20px;}
 h1 {
     font-size: 2rem;
-    color: #2c3e50;
-    margin: 20px 0 10px;
-    border-bottom: 3px solid #3498db;
+    margin: 20px 5px ;
+    border-left: 6px solid #3498db;
     display: inline-block;
-    padding-bottom: 6px;
+    padding-left: 6px;
 }
 
 h2 {
@@ -48,6 +65,7 @@ h2 {
 
 .nav li:hover {
     background: #3498db;
+    font-size: 1.1rem;
 }
 
 /* 段落 */
@@ -101,6 +119,45 @@ form {
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     margin: 10px auto;
+}
+/* 表单容器（让表单和头像左右排列） */
+.form-container {
+
+    max-width: 800px;
+    margin: 20px auto;
+}
+/* 表单 */
+form {
+    text-align: left;
+    background: #fff;
+    padding: 30px 40px;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    margin: 0;
+}
+/* 左侧输入框区域 */
+.form-fields {
+    flex: 1;
+}
+/* 表单头部（账号密码 + 头像） */
+.form-header {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 15px;
+}
+
+/* 头像容器 */
+.avatar {
+    flex-shrink: 0;
+}
+.avatar .img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #3498db;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
 label {
@@ -184,4 +241,10 @@ ul:not(.nav), ol {
 
 li {
     margin: 4px 0;
+}
+.footer{
+    background-color: #2c3e50;
+    color:white;
+    text-align:center;
+    padding:10px 0;
 }
