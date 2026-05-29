@@ -22,9 +22,9 @@ public final class CompanyUtil {
     public static double totalBonus(Employee[] arr){
        double sunBonus = 0;
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] instanceof Bonus) {}
+            if (arr[i] instanceof Bonus) {
                 sunBonus += ((Bonus) arr[i]).calcBonus();
-
+            }
         }
         return sunBonus;
     }
