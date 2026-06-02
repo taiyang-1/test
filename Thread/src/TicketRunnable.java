@@ -1,53 +1,25 @@
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * 卖票任务 — 三个线程共享这同一个对象
+ * 卖票任务（乐观锁版）— 三个线程共享这同一个对象
  */
 public class TicketRunnable implements Runnable {
-    private int tickets = 10;   // 不加 static，靠共享同一个对象
-    Lock lock = new ReentrantLock();
+
+    private AtomicInteger tickets = new AtomicInteger(10);
     @Override
     public void run() {
-//        while (true) {
-//            synchronized (this) {        // this 就是锁
-//                if (tickets > 0) {
-//                    System.out.println(Thread.currentThread().getName()
-//                            + " 卖出第" + tickets + "张票");
-//                    tickets--;
-//                    try {
-//                        Thread.sleep(500);
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
-//                } else {
-//                    break;               // 没票了，退出
-//                }
-//            }
-//        }
-
-
-
-
         while (true) {
-            lock.lock();
-        try {
-
-                if (tickets > 0) {
-                    System.out.println(Thread.currentThread().getName()
-                            + " 卖出第" + tickets + "张票");
-                    tickets--;
-                    try {
-                        Thread.sleep(500);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                } else {
-                    System.out.println("票卖完了");
-                    break;              // 没票了，退出
-                }
-            }finally{
-                lock.unlock();
+            int ticketNum = tickets.getAndDecrement();  // 原子取值+减1
+            if (ticketNum <= 0) {
+                System.out.println(Thread.currentThread().getName() + " 票卖完了");
+                break;
+            }
+            System.out.println(Thread.currentThread().getName()
+                    + " 卖出第" + ticketNum + "张票");
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
     }
