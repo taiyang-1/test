@@ -13,8 +13,8 @@ public class Fund extends Asset{
      * @param price    资产价格
      * @param quantity 资产数量
      */
-    public Fund(String code, String name, double price, int quantity) {
-        super(code, name, price, quantity);
+    public Fund(String code, String name, double price, int quantity,RiskLevel level) {
+        super(code, name, price, quantity , AssetType.FUND , level);
     }
 
     @Override

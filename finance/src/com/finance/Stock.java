@@ -13,9 +13,9 @@ public class Stock extends Asset{
  * @param price 股票价格
  * @param quantity 股票数量
  */
-    public Stock(String code, String name, double price, int quantity) {
+    public Stock(String code, String name, double price, int quantity ,  RiskLevel level) {
     // 调用父类的构造方法，初始化股票的基本属性
-        super(code, name, price, quantity);
+        super(code, name, price, quantity, AssetType.STOCK, level);
     }
 
     @Override

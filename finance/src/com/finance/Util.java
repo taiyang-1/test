@@ -17,7 +17,7 @@ public class Util {
         while (true) {
             String str = readKeyBoard(1);
             c = str.charAt(0);
-            if (c != '1' && c != '2' && c != '3' && c != '4') {
+            if (c < '1' || c > '8') {
                 System.out.print("选择错误，请重新输入：");
             } else {
                 break;

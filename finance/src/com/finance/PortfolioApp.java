@@ -1,49 +1,60 @@
 package com.finance;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class PortfolioApp {
-    private static Asset[] portfolio = new Asset[10];
-    private static int size = 0;
-
+    private  static Portfolio pf = new Portfolio();
     public static void main(String[] args) {
         boolean running = true;
 
         while (running) {
             System.out.println("\n========== 个人投资组合管理 ==========");
             System.out.println("1. 添加资产");
-            System.out.println("2. 查看全部资产");
-            System.out.println("3. 计算总市值与总收益");
-            System.out.println("4. 退出");
+            System.out.println("2. 查看全部资产(按收益率排序)");
+            System.out.println("3. 按名称排序查看");
+            System.out.println("4. 按市值排序查看");
+            System.out.println("5. 按代码查找资产");
+            System.out.println("6. 按代码删除资产");
+            System.out.println("7. 计算总市值与总收益");
+            System.out.println("8. 退出");
             char choice = Util.readMenuSelection();
-
             switch (choice) {
                 case '1':
                     addAsset();
                     break;
                 case '2':
-                    viewAll();
+                    viewByProfit(pf);
                     break;
                 case '3':
-                    calculateTotal();
+                    viewByName(pf);
                     break;
                 case '4':
-                    System.out.println("退出成功！");
+                    viewByMarketValue(pf);
+                    break;
+                case '5':
+                    findByCode(pf);
+                    break;
+                case '6':
+                    remove(pf);
+                    break;
+                case '7':
+                    showTotal(pf);
+                    break;
+                case '8':
                     running = false;
                     break;
                 default:
-                    System.out.println("无效选择，请重试。");
+                    System.out.println("无效的选择，请重试。");
             }
+                }
         }
-    }
+
 
     /**
-     * 添加资产：判断数组是否已满，选择类型，读取信息，创建子类对象。
+     * 添加资产：选择类型，读取信息，创建子类对象。
      */
     private static void addAsset() {
-        if (size >= portfolio.length) {
-            System.out.println("组合已满（最多" + portfolio.length + "个），无法添加！");
-            return;
-        }
-
         String type = Util.readString("请输入资产类型（1.股票  2.基金  3.债券）：");
 
         switch (type) {
@@ -52,8 +63,8 @@ public class PortfolioApp {
                 String name = Util.readString("请输入股票名称：");
                 int quantity = Util.readInt("请输入股票数量：");
                 double price = Util.readDouble("请输入股票价格：");
-                portfolio[size] = new Stock(code, name, price, quantity);
-                size++;
+                RiskLevel level = readRiskLevel();
+                pf.add(new Stock(code, name, price, quantity,level));
                 System.out.println("股票已添加！");
                 break;
             }
@@ -62,8 +73,8 @@ public class PortfolioApp {
                 String name = Util.readString("请输入基金名称：");
                 int quantity = Util.readInt("请输入基金数量：");
                 double price = Util.readDouble("请输入基金价格：");
-                portfolio[size] = new Fund(code, name, price, quantity);
-                size++;
+                RiskLevel level = readRiskLevel();
+                pf.add(new Fund(code, name, price, quantity,level));
                 System.out.println("基金已添加！");
                 break;
             }
@@ -73,8 +84,8 @@ public class PortfolioApp {
                 int quantity = Util.readInt("请输入债券数量：");
                 double price = Util.readDouble("请输入债券价格：");
                 double couponRate = Util.readDouble("请输入债券票面利率（如0.04表示4%）：");
-                portfolio[size] = new Bond(code, name, price, quantity, couponRate);
-                size++;
+                RiskLevel level = readRiskLevel();
+                pf.add(new Bond(code, name, price, quantity, couponRate,level));
                 System.out.println("债券已添加！");
                 break;
             }
@@ -83,38 +94,113 @@ public class PortfolioApp {
         }
     }
 
-    /**
-     * 查看全部资产：遍历数组，调用每个资产的 getInfo() 和 calculateProfit()。
-     */
-    private static void viewAll() {
-        if (size == 0) {
+
+/**
+ * 按收益查看资产列表的方法
+ * @param pf 投资组合对象，包含所有资产信息
+ */
+    private static void viewByProfit( Portfolio pf){
+    // 检查投资组合是否为空
+        if(pf.size()==0){
             System.out.println("暂无资产，请先添加。");
-            return;
+        }else{
+            System.out.println("\n————— 资产列表（按收益排序）—————");
+        // 获取投资组合中的所有资产
+            ArrayList<Asset> list = pf.getAll();
+        // 使用Comparator对资产按收益进行降序排序
+            list.sort(new Comparator<Asset>() {
+                @Override
+                public int compare(Asset o1, Asset o2) {
+                // 比较两个资产的收益，o2在前实现降序排序
+                    return Double.compare(o2.calculateProfit(), o1.calculateProfit());
+                }
+            });
+            for (Asset asset : list) {
+                System.out.println(asset.getInfo());
+            }
         }
-        System.out.println("\n————— 资产列表（共 " + size + " 个）—————");
-        for (int i = 0; i < size; i++) {
-            Asset a = portfolio[i];
-            System.out.println("[" + (i + 1) + "] " + a.getInfo()
-                    + "，收益：" + String.format("%.2f", a.calculateProfit()));
-        }
+
     }
 
     /**
-     * 计算总市值与总收益：遍历数组累加。
+     * 按名称查看资产列表的方法
+     * @param pf 投资组合对象，包含所有资产信息
      */
-    private static void calculateTotal() {
-        if (size == 0) {
-            System.out.println("暂无资产，请先添加。");
-            return;
-        }
-        double totalMarketValue = 0;
-        double totalProfit = 0;
-        for (int i = 0; i < size; i++) {
-            totalMarketValue += portfolio[i].getMarketValue();
-            totalProfit += portfolio[i].calculateProfit();
-        }
-        System.out.println("\n————— 投资组合汇总 —————");
-        System.out.println("总市值：" + String.format("%.2f", totalMarketValue));
-        System.out.println("总收益：" + String.format("%.2f", totalProfit));
+     private static void viewByName(Portfolio pf){
+         if(pf.size()==0){
+             System.out.println("暂无资产，请先添加。");
+             return;
+         }else{
+             System.out.println("\n————— 资产列表（按名称排序）—————");
+             ArrayList<Asset> list = pf.getAll();
+             Collections.sort(list,new Comparator<Asset>() {
+
+                 @Override
+                 public int compare(Asset o1, Asset o2) {
+                     return o1.getName().compareTo(o2.getName());
+                 }
+             });
+             for (Asset asset : list) {
+                 System.out.println(asset.getInfo());
+             }
+         }
+     }
+
+     //降序
+    private static void viewByMarketValue(Portfolio pf){
+         if(pf.size()==0){
+             System.out.println("暂无资产，请先添加。");
+             return;
+         }else{
+             System.out.println("\n————— 资产列表（按市值排序）—————");
+             ArrayList<Asset> list = pf.getAll();
+             Collections.sort(list,new Comparator<Asset>() {
+
+                 @Override
+                 public int compare(Asset o1, Asset o2) {
+                     return Double.compare(o2.getMarketValue(), o1.getMarketValue());
+                 }
+             });
+             for (Asset asset : list) {
+                 System.out.println(asset.getInfo());
+             }
+         }
     }
-}
+
+    private static void findByCode(Portfolio pf){
+         String code = Util.readString("请输入资产代码：");
+         Asset a = pf.findByCode(code);
+         if(a==null){
+             System.out.println("未找到该资产！");
+         }else {
+             System.out.println(a.getInfo());
+         }
+
+    }
+
+    private static void remove(Portfolio pf){
+         String code = Util.readString("请输入资产代码：");
+         if(pf.remove(code)){
+             System.out.println("删除成功！");
+         }else{
+             System.out.println("删除失败！");
+         }
+    }
+
+    private static void showTotal(Portfolio pf){
+         System.out.println("\n————— 统计信息 —————");
+         System.out.println("总资产价值：" + String.format("%.2f",pf.getTotalMarketValue()));
+         System.out.println("总资产利润：" + String.format("%.2f",pf.getTotalProfit()));
+    }
+    private static RiskLevel readRiskLevel() {
+        String input = Util.readString("请选择风险等级（1.低风险  2.中风险  3.高风险）：");
+        switch (input) {
+            case "1": return RiskLevel.LOW;
+            case "2": return RiskLevel.MEDIUM;
+            case "3": return RiskLevel.HIGH;
+            default:
+                System.out.println("无效选择，默认设为中风险");
+                return RiskLevel.MEDIUM;
+        }
+    }
+    }
