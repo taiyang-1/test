@@ -4,18 +4,19 @@ package com.finance;
  * Asset类，用于表示资产信息
  * 这是一个基础的资产类，可以用于存储和管理各种资产相关的数据
  */
-public abstract class Asset {
+public abstract class Asset implements Comparable<Asset>{
     private String code;// 资产代码
     private String name;// 资产名称
     private double price;// 单价
     private int quantity;// 持仓数量
-
+    private AssetType type;//子类构造器传入
+    private RiskLevel riskLevel;//子类构造器传入
     /**
      * 资产类的构造方法
      * @param price 资产价格
  * @param quantity 资产数量
  */
-    public Asset(String code, String name, double price, int quantity) {
+    public Asset(String code, String name, double price, int quantity, AssetType type, RiskLevel riskLevel) {
     // 使用传入的参数初始化资产代码
         this.code = code;
     // 使用传入的参数初始化资产名称
@@ -24,6 +25,13 @@ public abstract class Asset {
         this.price = price;
     // 使用传入的参数初始化资产数量
         this.quantity = quantity;
+        this.type = type;
+        this.riskLevel = riskLevel;
+    }
+
+    @Override
+    public int compareTo(Asset other) {
+        return Double.compare(this.calculateProfit(), other.calculateProfit());
     }
 
     public String getCode() {
@@ -58,7 +66,23 @@ public abstract class Asset {
         this.quantity = quantity;
     }
 
-/**
+    public AssetType getType() {
+        return type;
+    }
+
+    public void setType(AssetType type) {
+        this.type = type;
+    }
+
+    public RiskLevel getRiskLevel() {
+        return riskLevel;
+    }
+
+    public void setRiskLevel(RiskLevel riskLevel) {
+        this.riskLevel = riskLevel;
+    }
+
+    /**
  * 计算市场价值的方法
  * 该方法通过价格和数量的乘积得到总的市场价值
  *
@@ -72,6 +96,6 @@ public abstract class Asset {
     public abstract double calculateProfit();
 
     public String getInfo() {
-        return "资产代码：" + code + "，资产名称：" + name + "，单价：" + price + "，持仓数量：" + quantity + "，市值：" + getMarketValue();
+        return "资产代码：" + code + "，资产名称：" + name + "，单价：" + price + "，持仓数量：" + quantity + "，市值：" + getMarketValue() + "，资产类型：" + type.getDescription() + "，风险等级：" + riskLevel.getDescription();
     }
 }
