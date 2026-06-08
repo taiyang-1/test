@@ -1,4 +1,6 @@
-package com.finance;
+package com.finance.model;
+
+import com.finance.expection.InvalidPriceException;
 
 /**
  * Asset类，用于表示资产信息
@@ -17,6 +19,9 @@ public abstract class Asset implements Comparable<Asset>{
  * @param quantity 资产数量
  */
     public Asset(String code, String name, double price, int quantity, AssetType type, RiskLevel riskLevel) {
+        if(price<=0){
+            throw new InvalidPriceException("Invalid price: " + price);
+        }
     // 使用传入的参数初始化资产代码
         this.code = code;
     // 使用传入的参数初始化资产名称

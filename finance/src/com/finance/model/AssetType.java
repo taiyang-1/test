@@ -1,4 +1,4 @@
-package com.finance;
+package com.finance.model;
 
 public enum AssetType {
     STOCK("股票"), FUND("基金"), BOND("债券");

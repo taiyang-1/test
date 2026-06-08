@@ -10,14 +10,14 @@ public class Util {
     private static Scanner scanner = new Scanner(System.in);
 
     /**
-     * 读取菜单选择，只接受 '1'~'8'，输入不合法则提示重试。
+     * 读取菜单选择，只接受 '1'~'9'，输入不合法则提示重试。
      */
     public static char readMenuSelection() {
         char c;
         while (true) {
             String str = readKeyBoard(1);
             c = str.charAt(0);
-            if (c < '1' || c > '8') {
+            if (c < '1' || c > '9') {
                 System.out.print("选择错误，请重新输入：");
             } else {
                 break;
