@@ -10,14 +10,14 @@ public class Util {
     private static Scanner scanner = new Scanner(System.in);
 
     /**
-     * 读取菜单选择，只接受 '1'~'4'，输入不合法则提示重试。
+     * 读取菜单选择，只接受 '1'~'9'，输入不合法则提示重试。
      */
     public static char readMenuSelection() {
         char c;
         while (true) {
             String str = readKeyBoard(1);
             c = str.charAt(0);
-            if (c < '1' || c > '8') {
+            if (c < '1' || c > '9') {
                 System.out.print("选择错误，请重新输入：");
             } else {
                 break;
@@ -25,24 +25,6 @@ public class Util {
         }
         return c;
     }
-
-    /**
-     * 读取确认选择（Y/N），不区分大小写。
-     */
-    public static char readConfirmSelection() {
-        char c;
-        while (true) {
-            String str = readKeyBoard(1).toUpperCase();
-            c = str.charAt(0);
-            if (c == 'Y' || c == 'N') {
-                break;
-            } else {
-                System.out.print("选择错误，请重新输入：");
-            }
-        }
-        return c;
-    }
-
     /**
      * 打印提示并读取一行字符串（不允许为空）。
      * @param prompt 提示文字

@@ -1,10 +1,10 @@
-package com.finance;
+package com.finance.model;
 
 /**
  * Stock类用于表示股票信息
  * 该类可以用于存储和操作股票相关的数据
  */
-public class Stock extends Asset{
+public class Stock extends Asset {
 
 /**
  * 构造方法：创建Stock对象
